@@ -57,6 +57,38 @@ class Transaction {
       fees: fees ?? this.fees,
     );
   }
+
+  // Convert Transaction to JSON Map
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'type': type.index,
+      'dateTime': dateTime.toIso8601String(),
+      'amount': amount,
+      'category': category,
+      'accountId': accountId,
+      'toAccountId': toAccountId,
+      'note': note,
+      'description': description,
+      'imagePath': imagePath,
+      'fees': fees,
+    };
+  }
+
+  // Create Transaction from JSON Map
+  factory Transaction.fromJson(Map<String, dynamic> json) {
+    return Transaction(
+      id: json['id'] as String,
+      type: TransactionType.values[json['type'] as int],
+      dateTime: DateTime.parse(json['dateTime'] as String),
+      amount: (json['amount'] as num).toDouble(),
+      category: json['category'] as String,
+      accountId: json['accountId'] as String,
+      toAccountId: json['toAccountId'] as String?,
+      note: json['note'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      imagePath: json['imagePath'] as String?,
+      fees: (json['fees'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
 }
-
-

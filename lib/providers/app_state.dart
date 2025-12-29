@@ -1,31 +1,32 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import '../models/account.dart';
 import '../models/transaction.dart';
 
 class AppState extends ChangeNotifier {
   final Uuid _uuid = const Uuid();
+  bool _isLoaded = false;
   
-  List<Account> _accounts = [
-    Account(
-      id: '1',
-      name: 'Cash',
-      balance: 0.0,
-      icon: Icons.money,
-      color: Colors.green,
-      type: AccountType.asset,
-    ),
-    Account(
-      id: '2',
-      name: 'Bank Account',
-      balance: 0.0,
-      icon: Icons.account_balance,
-      color: Colors.blue,
-      type: AccountType.asset,
-    ),
-  ];
-
+  List<Account> _accounts = [];
   List<Transaction> _transactions = [];
+
+  // Storage keys
+  static const String _accountsKey = 'accounts_data';
+  static const String _transactionsKey = 'transactions_data';
+  static const String _incomeCategoriesKey = 'income_categories';
+  static const String _expenseCategoriesKey = 'expense_categories';
+  static const String _transferCategoriesKey = 'transfer_categories';
+  static const String _paymentCategoriesKey = 'payment_categories';
+  static const String _categoryIconsKey = 'category_icons';
+
+  // Constructor - load data on initialization
+  AppState() {
+    _loadAllData();
+  }
+
+  bool get isLoaded => _isLoaded;
 
   // All accounts
   List<Account> get accounts => _accounts;
@@ -47,34 +48,35 @@ class AppState extends ChangeNotifier {
   List<Transaction> get transactions => _transactions;
 
   // Category icons map
-  final Map<String, IconData> _categoryIcons = {
+  Map<String, int> _categoryIconCodes = {
     // Income
-    'Salary': Icons.work,
-    'Freelance': Icons.computer,
-    'Investment': Icons.trending_up,
-    'Gift': Icons.card_giftcard,
-    'Refund': Icons.replay,
+    'Salary': Icons.work.codePoint,
+    'Freelance': Icons.computer.codePoint,
+    'Investment': Icons.trending_up.codePoint,
+    'Gift': Icons.card_giftcard.codePoint,
+    'Refund': Icons.replay.codePoint,
     // Expense
-    'Food & Dining': Icons.restaurant,
-    'Transportation': Icons.directions_car,
-    'Shopping': Icons.shopping_bag,
-    'Entertainment': Icons.movie,
-    'Bills & Utilities': Icons.receipt_long,
-    'Healthcare': Icons.medical_services,
-    'Education': Icons.school,
-    'Travel': Icons.flight,
+    'Food & Dining': Icons.restaurant.codePoint,
+    'Transportation': Icons.directions_car.codePoint,
+    'Shopping': Icons.shopping_bag.codePoint,
+    'Entertainment': Icons.movie.codePoint,
+    'Bills & Utilities': Icons.receipt_long.codePoint,
+    'Healthcare': Icons.medical_services.codePoint,
+    'Education': Icons.school.codePoint,
+    'Travel': Icons.flight.codePoint,
     // Transfer
-    'Account Transfer': Icons.swap_horiz,
-    'Savings': Icons.savings,
-    'Investment Transfer': Icons.show_chart,
-    'Emergency Fund': Icons.shield,
+    'Account Transfer': Icons.swap_horiz.codePoint,
+    'Savings': Icons.savings.codePoint,
+    'Investment Transfer': Icons.show_chart.codePoint,
+    'Emergency Fund': Icons.shield.codePoint,
     // Payment
-    'Credit Card Payment': Icons.credit_card,
-    'Loan Payment': Icons.account_balance,
-    'Debt Payment': Icons.money_off,
-    'Mortgage Payment': Icons.home,
+    'Credit Card Payment': Icons.credit_card.codePoint,
+    'Loan Payment': Icons.account_balance.codePoint,
+    'Debt Payment': Icons.money_off.codePoint,
+    'Mortgage Payment': Icons.home.codePoint,
     // Default
-    'Other': Icons.more_horiz,
+    'Other': Icons.more_horiz.codePoint,
+    'Transfer Fees': Icons.money_off.codePoint,
   };
 
   // Income categories
@@ -124,11 +126,16 @@ class AppState extends ChangeNotifier {
   List<String> get paymentCategories => _paymentCategories;
 
   IconData getCategoryIcon(String category) {
-    return _categoryIcons[category] ?? Icons.category;
+    final codePoint = _categoryIconCodes[category];
+    if (codePoint != null) {
+      return IconData(codePoint, fontFamily: 'MaterialIcons');
+    }
+    return Icons.category;
   }
 
   void setCategoryIcon(String category, IconData icon) {
-    _categoryIcons[category] = icon;
+    _categoryIconCodes[category] = icon.codePoint;
+    _saveCategoryIcons();
     notifyListeners();
   }
 
@@ -136,15 +143,17 @@ class AppState extends ChangeNotifier {
     if (!_incomeCategories.contains(category)) {
       _incomeCategories.add(category);
       if (icon != null) {
-        _categoryIcons[category] = icon;
+        _categoryIconCodes[category] = icon.codePoint;
       }
+      _saveCategories();
       notifyListeners();
     }
   }
 
   void removeIncomeCategory(String category) {
     _incomeCategories.remove(category);
-    _categoryIcons.remove(category);
+    _categoryIconCodes.remove(category);
+    _saveCategories();
     notifyListeners();
   }
 
@@ -152,15 +161,17 @@ class AppState extends ChangeNotifier {
     if (!_expenseCategories.contains(category)) {
       _expenseCategories.add(category);
       if (icon != null) {
-        _categoryIcons[category] = icon;
+        _categoryIconCodes[category] = icon.codePoint;
       }
+      _saveCategories();
       notifyListeners();
     }
   }
 
   void removeExpenseCategory(String category) {
     _expenseCategories.remove(category);
-    _categoryIcons.remove(category);
+    _categoryIconCodes.remove(category);
+    _saveCategories();
     notifyListeners();
   }
 
@@ -168,15 +179,17 @@ class AppState extends ChangeNotifier {
     if (!_transferCategories.contains(category)) {
       _transferCategories.add(category);
       if (icon != null) {
-        _categoryIcons[category] = icon;
+        _categoryIconCodes[category] = icon.codePoint;
       }
+      _saveCategories();
       notifyListeners();
     }
   }
 
   void removeTransferCategory(String category) {
     _transferCategories.remove(category);
-    _categoryIcons.remove(category);
+    _categoryIconCodes.remove(category);
+    _saveCategories();
     notifyListeners();
   }
 
@@ -184,15 +197,17 @@ class AppState extends ChangeNotifier {
     if (!_paymentCategories.contains(category)) {
       _paymentCategories.add(category);
       if (icon != null) {
-        _categoryIcons[category] = icon;
+        _categoryIconCodes[category] = icon.codePoint;
       }
+      _saveCategories();
       notifyListeners();
     }
   }
 
   void removePaymentCategory(String category) {
     _paymentCategories.remove(category);
-    _categoryIcons.remove(category);
+    _categoryIconCodes.remove(category);
+    _saveCategories();
     notifyListeners();
   }
 
@@ -238,6 +253,7 @@ class AppState extends ChangeNotifier {
       type: type,
     );
     _accounts.add(account);
+    _saveAccounts();
     notifyListeners();
   }
 
@@ -257,6 +273,7 @@ class AppState extends ChangeNotifier {
         );
       }
       
+      _saveAccounts();
       notifyListeners();
     }
   }
@@ -265,6 +282,7 @@ class AppState extends ChangeNotifier {
     final index = _accounts.indexWhere((a) => a.id == accountId);
     if (index != -1) {
       _accounts[index] = _accounts[index].copyWith(isClosed: true);
+      _saveAccounts();
       notifyListeners();
     }
   }
@@ -273,6 +291,7 @@ class AppState extends ChangeNotifier {
     final index = _accounts.indexWhere((a) => a.id == accountId);
     if (index != -1) {
       _accounts[index] = _accounts[index].copyWith(isClosed: false);
+      _saveAccounts();
       notifyListeners();
     }
   }
@@ -299,6 +318,8 @@ class AppState extends ChangeNotifier {
         updateAccountBalance(transaction.toAccountId!, -transaction.amount);
       }
     }
+    
+    _saveTransactions();
   }
 
   void deleteTransaction(String id) {
@@ -325,11 +346,13 @@ class AppState extends ChangeNotifier {
     }
     
     _transactions.removeWhere((t) => t.id == id);
+    _saveTransactions();
     notifyListeners();
   }
 
   void deleteAccount(String id) {
     _accounts.removeWhere((a) => a.id == id);
+    _saveAccounts();
     notifyListeners();
   }
 
@@ -351,5 +374,121 @@ class AppState extends ChangeNotifier {
     return _transactions.where((t) => 
       t.accountId == accountId || t.toAccountId == accountId
     ).length;
+  }
+
+  // ============= PERSISTENCE METHODS =============
+
+  Future<void> _loadAllData() async {
+    final prefs = await SharedPreferences.getInstance();
+    
+    // Load accounts
+    final accountsJson = prefs.getString(_accountsKey);
+    if (accountsJson != null) {
+      final List<dynamic> accountsList = jsonDecode(accountsJson);
+      _accounts = accountsList.map((json) => Account.fromJson(json)).toList();
+    } else {
+      // Default accounts for first time
+      _accounts = [
+        Account(
+          id: _uuid.v4(),
+          name: 'Cash',
+          balance: 0.0,
+          icon: Icons.money,
+          color: Colors.green,
+          type: AccountType.asset,
+        ),
+        Account(
+          id: _uuid.v4(),
+          name: 'Bank Account',
+          balance: 0.0,
+          icon: Icons.account_balance,
+          color: Colors.blue,
+          type: AccountType.asset,
+        ),
+      ];
+      _saveAccounts();
+    }
+    
+    // Load transactions
+    final transactionsJson = prefs.getString(_transactionsKey);
+    if (transactionsJson != null) {
+      final List<dynamic> transactionsList = jsonDecode(transactionsJson);
+      _transactions = transactionsList.map((json) => Transaction.fromJson(json)).toList();
+    }
+    
+    // Load categories
+    final incomeJson = prefs.getStringList(_incomeCategoriesKey);
+    if (incomeJson != null) {
+      _incomeCategories = incomeJson;
+    }
+    
+    final expenseJson = prefs.getStringList(_expenseCategoriesKey);
+    if (expenseJson != null) {
+      _expenseCategories = expenseJson;
+    }
+    
+    final transferJson = prefs.getStringList(_transferCategoriesKey);
+    if (transferJson != null) {
+      _transferCategories = transferJson;
+    }
+    
+    final paymentJson = prefs.getStringList(_paymentCategoriesKey);
+    if (paymentJson != null) {
+      _paymentCategories = paymentJson;
+    }
+    
+    // Load category icons
+    final iconsJson = prefs.getString(_categoryIconsKey);
+    if (iconsJson != null) {
+      final Map<String, dynamic> iconsMap = jsonDecode(iconsJson);
+      _categoryIconCodes = iconsMap.map((key, value) => MapEntry(key, value as int));
+    }
+    
+    _isLoaded = true;
+    notifyListeners();
+  }
+
+  Future<void> _saveAccounts() async {
+    final prefs = await SharedPreferences.getInstance();
+    final accountsJson = jsonEncode(_accounts.map((a) => a.toJson()).toList());
+    await prefs.setString(_accountsKey, accountsJson);
+  }
+
+  Future<void> _saveTransactions() async {
+    final prefs = await SharedPreferences.getInstance();
+    final transactionsJson = jsonEncode(_transactions.map((t) => t.toJson()).toList());
+    await prefs.setString(_transactionsKey, transactionsJson);
+  }
+
+  Future<void> _saveCategories() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_incomeCategoriesKey, _incomeCategories);
+    await prefs.setStringList(_expenseCategoriesKey, _expenseCategories);
+    await prefs.setStringList(_transferCategoriesKey, _transferCategories);
+    await prefs.setStringList(_paymentCategoriesKey, _paymentCategories);
+    await _saveCategoryIcons();
+  }
+
+  Future<void> _saveCategoryIcons() async {
+    final prefs = await SharedPreferences.getInstance();
+    final iconsJson = jsonEncode(_categoryIconCodes);
+    await prefs.setString(_categoryIconsKey, iconsJson);
+  }
+
+  // Clear all data (for testing/reset purposes)
+  Future<void> clearAllData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_accountsKey);
+    await prefs.remove(_transactionsKey);
+    await prefs.remove(_incomeCategoriesKey);
+    await prefs.remove(_expenseCategoriesKey);
+    await prefs.remove(_transferCategoriesKey);
+    await prefs.remove(_paymentCategoriesKey);
+    await prefs.remove(_categoryIconsKey);
+    
+    // Reset to defaults
+    _accounts = [];
+    _transactions = [];
+    _loadAllData();
   }
 }
