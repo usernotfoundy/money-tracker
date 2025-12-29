@@ -27,6 +27,7 @@ class StatsScreen extends StatelessWidget {
           final incomeByCategory = <String, double>{};
           final expenseByCategory = <String, double>{};
           double totalExpenseAndPayments = 0;
+          double totalTransferFees = 0;
           
           for (final t in appState.transactions) {
             if (t.type == TransactionType.income) {
@@ -41,7 +42,17 @@ class StatsScreen extends StatelessWidget {
               expenseByCategory[t.category] = 
                   (expenseByCategory[t.category] ?? 0) + t.amount;
               totalExpenseAndPayments += t.amount;
+            } else if (t.type == TransactionType.transfer && t.fees > 0) {
+              // Include transfer fees as expenses
+              totalTransferFees += t.fees;
             }
+          }
+          
+          // Add transfer fees to expenses if any
+          if (totalTransferFees > 0) {
+            expenseByCategory['Transfer Fees'] = 
+                (expenseByCategory['Transfer Fees'] ?? 0) + totalTransferFees;
+            totalExpenseAndPayments += totalTransferFees;
           }
 
           final netBalance = appState.totalIncome - totalExpenseAndPayments;
@@ -114,7 +125,7 @@ class StatsScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Includes expenses & liability payments',
+                        'Includes expenses, payments & transfer fees',
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.4),
                           fontSize: 11,
@@ -158,7 +169,7 @@ class StatsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Includes expenses & liability payments',
+                    'Includes expenses, payments & transfer fees',
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.4),
                       fontSize: 12,

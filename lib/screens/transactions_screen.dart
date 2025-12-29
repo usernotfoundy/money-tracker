@@ -490,12 +490,23 @@ class _TransactionCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Icon(
-                    Icons.chevron_right,
-                    color: Colors.white.withOpacity(0.3),
-                    size: 18,
-                  ),
+                  if (transaction.fees > 0) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      '+₱${transaction.fees.toStringAsFixed(2)} fee',
+                      style: TextStyle(
+                        color: const Color(0xFFFF6B6B).withOpacity(0.7),
+                        fontSize: 11,
+                      ),
+                    ),
+                  ] else ...[
+                    const SizedBox(height: 4),
+                    Icon(
+                      Icons.chevron_right,
+                      color: Colors.white.withOpacity(0.3),
+                      size: 18,
+                    ),
+                  ],
                 ],
               ),
             ],
