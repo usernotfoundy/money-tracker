@@ -55,7 +55,7 @@ class MoreScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Money Tracker',
+                        'FinTrack',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -173,7 +173,7 @@ class MoreScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Money Tracker Beta 1',
+                  'FinTrack Beta 1',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.3),
                     fontSize: 12,
@@ -223,7 +223,7 @@ class MoreScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Money Tracker',
+              'FinTrack',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

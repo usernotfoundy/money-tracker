@@ -24,7 +24,7 @@ class MoneyTrackerApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => AppState(),
       child: MaterialApp(
-        title: 'Money Tracker',
+        title: 'FinTrack',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,

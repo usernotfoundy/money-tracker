@@ -1,5 +1,5 @@
 name: app
-description: "Money Tracker App - Track your income, expenses, and transfers"
+description: "FinTrack - Smart Finance Tracking App"
 publish_to: 'none'
 
 version: 1.0.0+1
