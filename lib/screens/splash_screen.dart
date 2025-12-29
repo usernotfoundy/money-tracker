@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
   
-  final String _appName = 'FinTrack';
+  final String _appName = 'E Money Well';
   
   @override
   void initState() {
@@ -74,9 +74,9 @@ class _SplashScreenState extends State<SplashScreen>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF1A1A2E),
-              Color(0xFF16213E),
-              Color(0xFF0F3460),
+              Color(0xFF1B2E20),
+              Color(0xFF283D2F),
+              Color(0xFF344E41),
             ],
           ),
         ),
@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Icon Animation
+              // EMW Logo Animation
               AnimatedBuilder(
                 animation: _mainController,
                 builder: (context, child) {
@@ -96,20 +96,46 @@ class _SplashScreenState extends State<SplashScreen>
                         width: 120,
                         height: 120,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF00D9A5),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Color(0xFF84A98C),
+                              Color(0xFF52796F),
+                            ],
+                          ),
                           borderRadius: BorderRadius.circular(30),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF00D9A5).withOpacity(0.4),
+                              color: const Color(0xFF84A98C).withOpacity(0.4),
                               blurRadius: 30,
                               spreadRadius: 5,
                             ),
                           ],
                         ),
-                        child: const Icon(
-                          Icons.account_balance_wallet_rounded,
-                          size: 60,
-                          color: Colors.white,
+                        child: Center(
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              // EMW Initials
+                              const Text(
+                                'EMW',
+                                style: TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white,
+                                  letterSpacing: 2,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black26,
+                                      blurRadius: 4,
+                                      offset: Offset(1, 2),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -129,11 +155,17 @@ class _SplashScreenState extends State<SplashScreen>
                       final letterProgress = (_textController.value * _appName.length - index).clamp(0.0, 1.0);
                       final curve = Curves.elasticOut.transform(letterProgress);
                       
-                      // Different colors for "Fin" and "Track"
-                      final isFirstPart = index < 3;
-                      final letterColor = isFirstPart 
-                          ? Colors.white 
-                          : const Color(0xFF00D9A5);
+                      // Color scheme: E=accent, space, Money=white, space, Well=accent
+                      Color letterColor;
+                      if (index == 0) {
+                        letterColor = const Color(0xFF84A98C); // E
+                      } else if (index >= 2 && index <= 6) {
+                        letterColor = Colors.white; // Money
+                      } else if (index >= 8) {
+                        letterColor = const Color(0xFF84A98C); // Well
+                      } else {
+                        letterColor = Colors.white; // Spaces
+                      }
                       
                       return Transform.translate(
                         offset: Offset(0, 20 * (1 - curve)),
@@ -144,10 +176,10 @@ class _SplashScreenState extends State<SplashScreen>
                             child: Text(
                               _appName[index],
                               style: TextStyle(
-                                fontSize: 42,
+                                fontSize: 36,
                                 fontWeight: FontWeight.bold,
                                 color: letterColor,
-                                letterSpacing: 2,
+                                letterSpacing: 1,
                                 shadows: [
                                   Shadow(
                                     color: letterColor.withOpacity(0.5),
@@ -178,11 +210,11 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Transform.translate(
                       offset: Offset(0, 10 * (1 - fadeValue)),
                       child: Text(
-                        'Smart Finance Tracking',
+                        'Your Financial Wellness Partner',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           color: Colors.white.withOpacity(0.6),
-                          letterSpacing: 2,
+                          letterSpacing: 1.5,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -214,13 +246,13 @@ class _SplashScreenState extends State<SplashScreen>
                             height: 10,
                             decoration: BoxDecoration(
                               color: isActive 
-                                  ? const Color(0xFF00D9A5) 
-                                  : const Color(0xFF00D9A5).withOpacity(0.3),
+                                  ? const Color(0xFF84A98C) 
+                                  : const Color(0xFF84A98C).withOpacity(0.3),
                               shape: BoxShape.circle,
                               boxShadow: isActive
                                   ? [
                                       BoxShadow(
-                                        color: const Color(0xFF00D9A5).withOpacity(0.5),
+                                        color: const Color(0xFF84A98C).withOpacity(0.5),
                                         blurRadius: 8,
                                         spreadRadius: 2,
                                       ),

@@ -28,7 +28,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'Categories',
@@ -37,7 +37,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -46,7 +46,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
         ),
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: const Color(0xFF00D9A5),
+          indicatorColor: const Color(0xFF84A98C),
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white54,
           isScrollable: true,
@@ -68,7 +68,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
               _CategoryList(
                 categories: appState.incomeCategories,
                 type: 'Income',
-                accentColor: const Color(0xFF00D9A5),
+                accentColor: const Color(0xFF84A98C),
                 onAdd: (category, icon) => appState.addIncomeCategory(category, icon: icon),
                 onDelete: (category) => appState.removeIncomeCategory(category),
                 isCategoryInUse: appState.isCategoryInUse,
@@ -88,7 +88,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
               _CategoryList(
                 categories: appState.transferCategories,
                 type: 'Transfer',
-                accentColor: const Color(0xFF4ECDC4),
+                accentColor: const Color(0xFF52796F),
                 onAdd: (category, icon) => appState.addTransferCategory(category, icon: icon),
                 onDelete: (category) => appState.removeTransferCategory(category),
                 isCategoryInUse: appState.isCategoryInUse,
@@ -98,7 +98,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
               _CategoryList(
                 categories: appState.paymentCategories,
                 type: 'Payment',
-                accentColor: const Color(0xFFFFB347),
+                accentColor: const Color(0xFFA3B18A),
                 onAdd: (category, icon) => appState.addPaymentCategory(category, icon: icon),
                 onDelete: (category) => appState.removePaymentCategory(category),
                 isCategoryInUse: appState.isCategoryInUse,
@@ -177,7 +177,7 @@ class _CategoryList extends StatelessWidget {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF16213E),
+                  color: const Color(0xFF283D2F),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListTile(
@@ -278,7 +278,7 @@ class _CategoryList extends StatelessWidget {
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          backgroundColor: const Color(0xFF16213E),
+          backgroundColor: const Color(0xFF283D2F),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -302,7 +302,7 @@ class _CategoryList extends StatelessWidget {
                       hintText: 'Category name',
                       hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
                       filled: true,
-                      fillColor: const Color(0xFF1A1A2E),
+                      fillColor: const Color(0xFF1B2E20),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide.none,
@@ -346,7 +346,7 @@ class _CategoryList extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: isSelected
                                   ? accentColor.withOpacity(0.3)
-                                  : const Color(0xFF1A1A2E),
+                                  : const Color(0xFF1B2E20),
                               borderRadius: BorderRadius.circular(8),
                               border: isSelected
                                   ? Border.all(color: accentColor, width: 2)
@@ -398,7 +398,7 @@ class _CategoryList extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -433,4 +433,3 @@ class _CategoryList extends StatelessWidget {
     );
   }
 }
-

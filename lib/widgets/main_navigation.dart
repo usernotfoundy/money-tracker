@@ -30,7 +30,7 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF16213E),
+          color: const Color(0xFF283D2F),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
@@ -101,7 +101,7 @@ class _NavBarItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? const Color(0xFF00D9A5).withOpacity(0.15)
+              ? const Color(0xFF84A98C).withOpacity(0.15)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
         ),
@@ -111,7 +111,7 @@ class _NavBarItem extends StatelessWidget {
             Icon(
               icon,
               color: isSelected
-                  ? const Color(0xFF00D9A5)
+                  ? const Color(0xFF84A98C)
                   : Colors.white.withOpacity(0.5),
               size: 24,
             ),
@@ -120,7 +120,7 @@ class _NavBarItem extends StatelessWidget {
               label,
               style: TextStyle(
                 color: isSelected
-                    ? const Color(0xFF00D9A5)
+                    ? const Color(0xFF84A98C)
                     : Colors.white.withOpacity(0.5),
                 fontSize: 11,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
@@ -132,5 +132,3 @@ class _NavBarItem extends StatelessWidget {
     );
   }
 }
-
-

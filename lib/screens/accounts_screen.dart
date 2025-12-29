@@ -10,7 +10,7 @@ class AccountsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'Accounts',
@@ -19,7 +19,7 @@ class AccountsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
         actions: [
@@ -58,11 +58,11 @@ class AccountsScreen extends StatelessWidget {
                   gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Color(0xFF0F3460), Color(0xFF16213E)],
+                    colors: [Color(0xFF344E41), Color(0xFF283D2F)],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: const Color(0xFF00D9A5).withOpacity(0.3),
+                    color: const Color(0xFF84A98C).withOpacity(0.3),
                   ),
                 ),
                 child: Column(
@@ -79,7 +79,7 @@ class AccountsScreen extends StatelessWidget {
                       '₱${appState.netWorth.toStringAsFixed(2)}',
                       style: TextStyle(
                         color: appState.netWorth >= 0 
-                            ? const Color(0xFF00D9A5)
+                            ? const Color(0xFF84A98C)
                             : const Color(0xFFFF6B6B),
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class AccountsScreen extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                const Icon(Icons.arrow_upward, color: Color(0xFF00D9A5), size: 16),
+                                const Icon(Icons.arrow_upward, color: Color(0xFF84A98C), size: 16),
                                 const SizedBox(width: 4),
                                 Text(
                                   'Assets',
@@ -108,7 +108,7 @@ class AccountsScreen extends StatelessWidget {
                             Text(
                               '₱${appState.totalAssets.toStringAsFixed(2)}',
                               style: const TextStyle(
-                                color: Color(0xFF00D9A5),
+                                color: Color(0xFF84A98C),
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -170,7 +170,7 @@ class AccountsScreen extends StatelessWidget {
                       onPressed: () => _showAddAccountDialog(context),
                       icon: const Icon(
                         Icons.add_circle,
-                        color: Color(0xFF00D9A5),
+                        color: Color(0xFF84A98C),
                       ),
                     ),
                   ],
@@ -202,11 +202,11 @@ class AccountsScreen extends StatelessWidget {
                               onPressed: () => _showAddAccountDialog(context),
                               icon: const Icon(
                                 Icons.add,
-                                color: Color(0xFF00D9A5),
+                                color: Color(0xFF84A98C),
                               ),
                               label: const Text(
                                 'Add your first account',
-                                style: TextStyle(color: Color(0xFF00D9A5)),
+                                style: TextStyle(color: Color(0xFF84A98C)),
                               ),
                             ),
                           ],
@@ -227,18 +227,18 @@ class AccountsScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 20),
                                 margin: const EdgeInsets.only(bottom: 12),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF4ECDC4).withOpacity(0.2),
+                                  color: const Color(0xFF52796F).withOpacity(0.2),
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Icon(Icons.archive, color: Color(0xFF4ECDC4)),
+                                    Icon(Icons.archive, color: Color(0xFF52796F)),
                                     SizedBox(width: 8),
                                     Text(
                                       'Close',
                                       style: TextStyle(
-                                        color: Color(0xFF4ECDC4),
+                                        color: Color(0xFF52796F),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -250,7 +250,7 @@ class AccountsScreen extends StatelessWidget {
                                 return await showDialog<bool>(
                                   context: context,
                                   builder: (ctx) => AlertDialog(
-                                    backgroundColor: const Color(0xFF16213E),
+                                    backgroundColor: const Color(0xFF283D2F),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(16),
                                     ),
@@ -274,7 +274,7 @@ class AccountsScreen extends StatelessWidget {
                                         onPressed: () => Navigator.pop(ctx, true),
                                         child: const Text(
                                           'Close',
-                                          style: TextStyle(color: Color(0xFF4ECDC4)),
+                                          style: TextStyle(color: Color(0xFF52796F)),
                                         ),
                                       ),
                                     ],
@@ -288,7 +288,7 @@ class AccountsScreen extends StatelessWidget {
                               margin: const EdgeInsets.only(bottom: 12),
                               padding: const EdgeInsets.all(20),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF16213E),
+                                color: const Color(0xFF283D2F),
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Row(
@@ -338,7 +338,7 @@ class AccountsScreen extends StatelessWidget {
                                         style: TextStyle(
                                           color: account.isLiability
                                               ? const Color(0xFFFF6B6B)
-                                              : const Color(0xFF00D9A5),
+                                              : const Color(0xFF84A98C),
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -348,7 +348,7 @@ class AccountsScreen extends StatelessWidget {
                                         account.isAsset ? 'Asset' : 'Liability',
                                         style: TextStyle(
                                           color: account.isAsset 
-                                              ? const Color(0xFF00D9A5).withOpacity(0.5)
+                                              ? const Color(0xFF84A98C).withOpacity(0.5)
                                               : const Color(0xFFFF6B6B).withOpacity(0.5),
                                           fontSize: 10,
                                         ),
@@ -369,7 +369,7 @@ class AccountsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddAccountDialog(context),
-        backgroundColor: const Color(0xFF00D9A5),
+        backgroundColor: const Color(0xFF84A98C),
         child: const Icon(Icons.add, color: Colors.white),
       ),
     );
@@ -390,7 +390,7 @@ class AccountsScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       builder: (ctx) => Container(
         decoration: const BoxDecoration(
-          color: Color(0xFF16213E),
+          color: Color(0xFF283D2F),
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         child: SafeArea(
@@ -420,7 +420,7 @@ class AccountsScreen extends StatelessWidget {
                 '₱${account.balance.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: account.isAsset 
-                      ? const Color(0xFF00D9A5)
+                      ? const Color(0xFF84A98C)
                       : const Color(0xFFFF6B6B),
                   fontSize: 14,
                 ),
@@ -428,7 +428,7 @@ class AccountsScreen extends StatelessWidget {
               const SizedBox(height: 16),
               const Divider(color: Colors.white12),
               ListTile(
-                leading: const Icon(Icons.archive, color: Color(0xFF4ECDC4)),
+                leading: const Icon(Icons.archive, color: Color(0xFF52796F)),
                 title: const Text(
                   'Close Account',
                   style: TextStyle(color: Colors.white),
@@ -478,7 +478,7 @@ class AccountsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -578,7 +578,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       decoration: const BoxDecoration(
-        color: Color(0xFF16213E),
+        color: Color(0xFF283D2F),
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Padding(
@@ -626,12 +626,12 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         color: _selectedType == AccountType.asset
-                            ? const Color(0xFF00D9A5).withOpacity(0.2)
-                            : const Color(0xFF1A1A2E),
+                            ? const Color(0xFF84A98C).withOpacity(0.2)
+                            : const Color(0xFF1B2E20),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: _selectedType == AccountType.asset
-                              ? const Color(0xFF00D9A5)
+                              ? const Color(0xFF84A98C)
                               : Colors.transparent,
                           width: 2,
                         ),
@@ -641,7 +641,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                           Icon(
                             Icons.trending_up,
                             color: _selectedType == AccountType.asset
-                                ? const Color(0xFF00D9A5)
+                                ? const Color(0xFF84A98C)
                                 : Colors.white.withOpacity(0.5),
                           ),
                           const SizedBox(height: 8),
@@ -649,7 +649,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                             'Asset',
                             style: TextStyle(
                               color: _selectedType == AccountType.asset
-                                  ? const Color(0xFF00D9A5)
+                                  ? const Color(0xFF84A98C)
                                   : Colors.white.withOpacity(0.5),
                               fontWeight: FontWeight.w600,
                             ),
@@ -676,7 +676,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                       decoration: BoxDecoration(
                         color: _selectedType == AccountType.liability
                             ? const Color(0xFFFF6B6B).withOpacity(0.2)
-                            : const Color(0xFF1A1A2E),
+                            : const Color(0xFF1B2E20),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: _selectedType == AccountType.liability
@@ -729,14 +729,14 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                 labelText: 'Account Name',
                 labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
                 filled: true,
-                fillColor: const Color(0xFF1A1A2E),
+                fillColor: const Color(0xFF1B2E20),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Color(0xFF00D9A5)),
+                  borderSide: const BorderSide(color: Color(0xFF84A98C)),
                 ),
               ),
             ),
@@ -754,16 +754,16 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                 hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
                 labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
                 prefixText: '₱ ',
-                prefixStyle: const TextStyle(color: Color(0xFF00D9A5)),
+                prefixStyle: const TextStyle(color: Color(0xFF84A98C)),
                 filled: true,
-                fillColor: const Color(0xFF1A1A2E),
+                fillColor: const Color(0xFF1B2E20),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Color(0xFF00D9A5)),
+                  borderSide: const BorderSide(color: Color(0xFF84A98C)),
                 ),
               ),
             ),
@@ -792,7 +792,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
                     decoration: BoxDecoration(
                       color: isSelected
                           ? _selectedColor.withOpacity(0.3)
-                          : const Color(0xFF1A1A2E),
+                          : const Color(0xFF1B2E20),
                       borderRadius: BorderRadius.circular(12),
                       border: isSelected
                           ? Border.all(color: _selectedColor, width: 2)
@@ -851,7 +851,7 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
               child: ElevatedButton(
                 onPressed: _saveAccount,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00D9A5),
+                  backgroundColor: const Color(0xFF84A98C),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -875,4 +875,3 @@ class _AddAccountSheetState extends State<_AddAccountSheet> {
     );
   }
 }
-

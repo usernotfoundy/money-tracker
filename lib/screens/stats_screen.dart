@@ -9,7 +9,7 @@ class StatsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'Statistics',
@@ -18,7 +18,7 @@ class StatsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
       ),
@@ -58,7 +58,7 @@ class StatsScreen extends StatelessWidget {
                       child: _StatCard(
                         title: 'Total Income',
                         amount: appState.totalIncome,
-                        color: const Color(0xFF00D9A5),
+                        color: const Color(0xFF84A98C),
                         icon: Icons.arrow_downward,
                       ),
                     ),
@@ -83,13 +83,13 @@ class StatsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        const Color(0xFF4ECDC4).withOpacity(0.2),
-                        const Color(0xFF4ECDC4).withOpacity(0.1),
+                        const Color(0xFF52796F).withOpacity(0.2),
+                        const Color(0xFF52796F).withOpacity(0.1),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: const Color(0xFF4ECDC4).withOpacity(0.3),
+                      color: const Color(0xFF52796F).withOpacity(0.3),
                     ),
                   ),
                   child: Column(
@@ -106,7 +106,7 @@ class StatsScreen extends StatelessWidget {
                         '₱${netBalance.toStringAsFixed(2)}',
                         style: TextStyle(
                           color: netBalance >= 0
-                              ? const Color(0xFF00D9A5)
+                              ? const Color(0xFF84A98C)
                               : const Color(0xFFFF6B6B),
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class StatsScreen extends StatelessWidget {
                     category: entry.key,
                     amount: entry.value,
                     total: appState.totalIncome,
-                    color: const Color(0xFF00D9A5),
+                    color: const Color(0xFF84A98C),
                   )),
                   const SizedBox(height: 24),
                 ],
@@ -287,7 +287,7 @@ class _CategoryBar extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF16213E),
+        color: const Color(0xFF283D2F),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -349,4 +349,3 @@ class _CategoryBar extends StatelessWidget {
     );
   }
 }
-

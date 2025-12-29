@@ -7,7 +7,7 @@ class MoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'More',
@@ -16,7 +16,7 @@ class MoreScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
       ),
@@ -30,7 +30,7 @@ class MoreScreen extends StatelessWidget {
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Color(0xFF0F3460), Color(0xFF16213E)],
+                colors: [Color(0xFF344E41), Color(0xFF283D2F)],
               ),
               borderRadius: BorderRadius.circular(20),
             ),
@@ -40,7 +40,7 @@ class MoreScreen extends StatelessWidget {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF00D9A5),
+                    color: const Color(0xFF84A98C),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Icon(
@@ -55,7 +55,7 @@ class MoreScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'FinTrack',
+                        'E Money Well',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -168,12 +168,12 @@ class MoreScreen extends StatelessWidget {
               children: [
                 Icon(
                   Icons.account_balance_wallet_rounded,
-                  color: const Color(0xFF00D9A5).withOpacity(0.3),
+                  color: const Color(0xFF84A98C).withOpacity(0.3),
                   size: 40,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'FinTrack Beta 1',
+                  'E Money Well Beta 1',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.3),
                     fontSize: 12,
@@ -201,7 +201,7 @@ class MoreScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -212,7 +212,7 @@ class MoreScreen extends StatelessWidget {
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                color: const Color(0xFF00D9A5),
+                color: const Color(0xFF84A98C),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Icon(
@@ -223,7 +223,7 @@ class MoreScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-              'FinTrack',
+              'E Money Well',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -242,10 +242,10 @@ class MoreScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: const Color(0xFFFFB347).withOpacity(0.15),
+                color: const Color(0xFFA3B18A).withOpacity(0.15),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: const Color(0xFFFFB347).withOpacity(0.3),
+                  color: const Color(0xFFA3B18A).withOpacity(0.3),
                 ),
               ),
               child: Row(
@@ -253,7 +253,7 @@ class MoreScreen extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.construction,
-                    color: const Color(0xFFFFB347),
+                    color: const Color(0xFFA3B18A),
                     size: 18,
                   ),
                   const SizedBox(width: 8),
@@ -274,7 +274,7 @@ class MoreScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF1A1A2E),
+                color: const Color(0xFF1B2E20),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -290,7 +290,7 @@ class MoreScreen extends StatelessWidget {
                   const Text(
                     'Emmanuel R. Adonay, II',
                     style: TextStyle(
-                      color: Color(0xFF00D9A5),
+                      color: Color(0xFF84A98C),
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -314,7 +314,7 @@ class MoreScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(ctx),
             child: const Text(
               'Close',
-              style: TextStyle(color: Color(0xFF00D9A5)),
+              style: TextStyle(color: Color(0xFF84A98C)),
             ),
           ),
         ],
@@ -326,13 +326,13 @@ class MoreScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
         title: const Row(
           children: [
-            Icon(Icons.help_outline, color: Color(0xFF00D9A5)),
+            Icon(Icons.help_outline, color: Color(0xFF84A98C)),
             SizedBox(width: 12),
             Text(
               'Help & Support',
@@ -363,18 +363,18 @@ class MoreScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF1A1A2E),
+                color: const Color(0xFF1B2E20),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Row(
                 children: [
-                  Icon(Icons.email, color: Color(0xFF00D9A5), size: 20),
+                  Icon(Icons.email, color: Color(0xFF84A98C), size: 20),
                   SizedBox(width: 12),
                   Expanded(
                     child: SelectableText(
                       'adonayemmanuelii@gmail.com',
                       style: TextStyle(
-                        color: Color(0xFF00D9A5),
+                        color: Color(0xFF84A98C),
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
@@ -398,7 +398,7 @@ class MoreScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(ctx),
             child: const Text(
               'Close',
-              style: TextStyle(color: Color(0xFF00D9A5)),
+              style: TextStyle(color: Color(0xFF84A98C)),
             ),
           ),
         ],
@@ -428,7 +428,7 @@ class MoreScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF16213E),
+        color: const Color(0xFF283D2F),
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
@@ -437,14 +437,14 @@ class MoreScreen extends StatelessWidget {
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1A2E),
+            color: const Color(0xFF1B2E20),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(
             icon,
             color: comingSoon 
                 ? Colors.white.withOpacity(0.3) 
-                : const Color(0xFF00D9A5),
+                : const Color(0xFF84A98C),
             size: 22,
           ),
         ),
@@ -465,13 +465,13 @@ class MoreScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFB347).withOpacity(0.2),
+                  color: const Color(0xFFA3B18A).withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Text(
                   'Coming Soon',
                   style: TextStyle(
-                    color: Color(0xFFFFB347),
+                    color: Color(0xFFA3B18A),
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
@@ -495,4 +495,3 @@ class MoreScreen extends StatelessWidget {
     );
   }
 }
-

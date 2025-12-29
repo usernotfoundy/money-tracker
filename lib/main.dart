@@ -24,20 +24,20 @@ class MoneyTrackerApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => AppState(),
       child: MaterialApp(
-        title: 'FinTrack',
+        title: 'E Money Well',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
           brightness: Brightness.dark,
-          scaffoldBackgroundColor: const Color(0xFF1A1A2E),
+          scaffoldBackgroundColor: const Color(0xFF1B2E20),
           colorScheme: const ColorScheme.dark(
-            primary: Color(0xFF00D9A5),
-            secondary: Color(0xFF4ECDC4),
-            surface: Color(0xFF16213E),
+            primary: Color(0xFF84A98C),
+            secondary: Color(0xFFA3B18A),
+            surface: Color(0xFF283D2F),
             error: Color(0xFFFF6B6B),
           ),
           appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF1A1A2E),
+            backgroundColor: Color(0xFF1B2E20),
             elevation: 0,
             centerTitle: true,
             iconTheme: IconThemeData(color: Colors.white),

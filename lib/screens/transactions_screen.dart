@@ -11,7 +11,7 @@ class TransactionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'Transactions',
@@ -20,7 +20,7 @@ class TransactionsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
       ),
@@ -36,12 +36,12 @@ class TransactionsScreen extends StatelessWidget {
                   gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Color(0xFF00D9A5), Color(0xFF00B386)],
+                    colors: [Color(0xFF84A98C), Color(0xFF52796F)],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF00D9A5).withOpacity(0.3),
+                      color: const Color(0xFF84A98C).withOpacity(0.3),
                       blurRadius: 15,
                       offset: const Offset(0, 5),
                     ),
@@ -103,7 +103,7 @@ class TransactionsScreen extends StatelessWidget {
                           child: _TransactionTypeButton(
                             label: 'Income',
                             icon: Icons.add_circle_outline,
-                            color: const Color(0xFF00D9A5),
+                            color: const Color(0xFF84A98C),
                             onTap: () => _navigateToAddTransaction(
                               context,
                               TransactionType.income,
@@ -131,7 +131,7 @@ class TransactionsScreen extends StatelessWidget {
                           child: _TransactionTypeButton(
                             label: 'Transfer',
                             icon: Icons.swap_horiz,
-                            color: const Color(0xFF4ECDC4),
+                            color: const Color(0xFF52796F),
                             onTap: () => _navigateToAddTransaction(
                               context,
                               TransactionType.transfer,
@@ -143,7 +143,7 @@ class TransactionsScreen extends StatelessWidget {
                           child: _TransactionTypeButton(
                             label: 'Pay Liability',
                             icon: Icons.payment,
-                            color: const Color(0xFFFFB347),
+                            color: const Color(0xFFA3B18A),
                             onTap: () => _navigateToAddTransaction(
                               context,
                               TransactionType.payment,
@@ -343,15 +343,15 @@ class _TransactionCard extends StatelessWidget {
     IconData typeIcon;
     
     if (isIncome) {
-      amountColor = const Color(0xFF00D9A5);
+      amountColor = const Color(0xFF84A98C);
       prefix = '+';
       typeIcon = Icons.arrow_downward;
     } else if (isTransfer) {
-      amountColor = const Color(0xFF4ECDC4);
+      amountColor = const Color(0xFF52796F);
       prefix = '';
       typeIcon = Icons.swap_horiz;
     } else if (isPayment) {
-      amountColor = const Color(0xFFFFB347);
+      amountColor = const Color(0xFFA3B18A);
       prefix = '-';
       typeIcon = Icons.payment;
     } else {
@@ -377,7 +377,7 @@ class _TransactionCard extends StatelessWidget {
         return await showDialog<bool>(
           context: context,
           builder: (ctx) => AlertDialog(
-            backgroundColor: const Color(0xFF16213E),
+            backgroundColor: const Color(0xFF283D2F),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -415,7 +415,7 @@ class _TransactionCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFF16213E),
+          color: const Color(0xFF283D2F),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -480,4 +480,3 @@ class _TransactionCard extends StatelessWidget {
     );
   }
 }
-

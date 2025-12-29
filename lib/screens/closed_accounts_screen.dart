@@ -9,7 +9,7 @@ class ClosedAccountsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
         title: const Text(
           'Closed Accounts',
@@ -18,7 +18,7 @@ class ClosedAccountsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -133,7 +133,7 @@ class ClosedAccountsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -160,7 +160,7 @@ class ClosedAccountsScreen extends StatelessWidget {
             },
             child: const Text(
               'Reopen',
-              style: TextStyle(color: Color(0xFF00D9A5)),
+              style: TextStyle(color: Color(0xFF84A98C)),
             ),
           ),
         ],
@@ -172,7 +172,7 @@ class ClosedAccountsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF16213E),
+        backgroundColor: const Color(0xFF283D2F),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -229,7 +229,7 @@ class _AccountCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF16213E),
+        color: const Color(0xFF283D2F),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: Colors.white.withOpacity(0.1),
@@ -261,12 +261,12 @@ class _AccountCard extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(2),
                         decoration: const BoxDecoration(
-                          color: Color(0xFF16213E),
+                          color: Color(0xFF283D2F),
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
                           Icons.check_circle,
-                          color: Color(0xFF00D9A5),
+                          color: Color(0xFF84A98C),
                           size: 16,
                         ),
                       ),
@@ -296,13 +296,13 @@ class _AccountCard extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF00D9A5).withOpacity(0.2),
+                            color: const Color(0xFF84A98C).withOpacity(0.2),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: const Text(
                             'CLOSED',
                             style: TextStyle(
-                              color: Color(0xFF00D9A5),
+                              color: Color(0xFF84A98C),
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                             ),
@@ -330,7 +330,7 @@ class _AccountCard extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: onReopen,
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Color(0xFF4ECDC4)),
+                    side: const BorderSide(color: Color(0xFF52796F)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -338,7 +338,7 @@ class _AccountCard extends StatelessWidget {
                   child: const Text(
                     'Reopen',
                     style: TextStyle(
-                      color: Color(0xFF4ECDC4),
+                      color: Color(0xFF52796F),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -372,4 +372,3 @@ class _AccountCard extends StatelessWidget {
     );
   }
 }
-

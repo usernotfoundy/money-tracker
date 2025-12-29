@@ -59,8 +59,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.dark(
-              primary: Color(0xFF00D9A5),
-              surface: Color(0xFF16213E),
+              primary: Color(0xFF84A98C),
+              surface: Color(0xFF283D2F),
             ),
           ),
           child: child!,
@@ -76,8 +76,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
           return Theme(
             data: Theme.of(context).copyWith(
               colorScheme: const ColorScheme.dark(
-                primary: Color(0xFF00D9A5),
-                surface: Color(0xFF16213E),
+                primary: Color(0xFF84A98C),
+                surface: Color(0xFF283D2F),
               ),
             ),
             child: child!,
@@ -152,13 +152,13 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   Color get _accentColor {
     switch (widget.type) {
       case TransactionType.income:
-        return const Color(0xFF00D9A5);
+        return const Color(0xFF84A98C);
       case TransactionType.expense:
         return const Color(0xFFFF6B6B);
       case TransactionType.transfer:
-        return const Color(0xFF4ECDC4);
+        return const Color(0xFF52796F);
       case TransactionType.payment:
-        return const Color(0xFFFFB347);
+        return const Color(0xFFA3B18A);
     }
   }
 
@@ -182,9 +182,9 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     final appState = context.watch<AppState>();
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF1B2E20),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1A1A2E),
+        backgroundColor: const Color(0xFF1B2E20),
         elevation: 0,
         title: Text(
           _title,
@@ -303,7 +303,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               Icons.category,
               child: DropdownButtonFormField<String>(
                 value: _selectedCategory,
-                dropdownColor: const Color(0xFF16213E),
+                dropdownColor: const Color(0xFF283D2F),
                 isExpanded: true,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
@@ -343,7 +343,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               Icons.account_balance_wallet,
               child: DropdownButtonFormField<String>(
                 value: _selectedAccountId,
-                dropdownColor: const Color(0xFF16213E),
+                dropdownColor: const Color(0xFF283D2F),
                 isExpanded: true,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
@@ -383,7 +383,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 Icons.account_balance,
                 child: DropdownButtonFormField<String>(
                   value: _selectedToAccountId,
-                  dropdownColor: const Color(0xFF16213E),
+                  dropdownColor: const Color(0xFF283D2F),
                   isExpanded: true,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
@@ -420,7 +420,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 Icons.credit_card,
                 child: DropdownButtonFormField<String>(
                   value: _selectedToAccountId,
-                  dropdownColor: const Color(0xFF16213E),
+                  dropdownColor: const Color(0xFF283D2F),
                   isExpanded: true,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
@@ -569,7 +569,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF16213E),
+        color: const Color(0xFF283D2F),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -595,4 +595,3 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     );
   }
 }
-
