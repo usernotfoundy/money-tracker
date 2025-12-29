@@ -21,6 +21,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   final _amountController = TextEditingController();
   final _noteController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _feesController = TextEditingController(text: '0');
   
   DateTime _selectedDateTime = DateTime.now();
   String? _selectedCategory;
@@ -35,6 +36,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     _amountController.dispose();
     _noteController.dispose();
     _descriptionController.dispose();
+    _feesController.dispose();
     super.dispose();
   }
 
@@ -118,6 +120,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
         return;
       }
 
+      final fees = widget.type == TransactionType.transfer
+          ? (double.tryParse(_feesController.text) ?? 0.0)
+          : 0.0;
+      
       final transaction = Transaction(
         id: _uuid.v4(),
         type: widget.type,
@@ -129,6 +135,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
         note: _noteController.text,
         description: _descriptionController.text,
         imagePath: _imagePath,
+        fees: fees,
       );
 
       context.read<AppState>().addTransaction(transaction);
@@ -408,6 +415,24 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                       _selectedToAccountId = value;
                     });
                   },
+                ),
+              ),
+              const SizedBox(height: 16),
+              // Transfer Fees
+              _buildCard(
+                'Transfer Fees (Optional)',
+                Icons.money_off,
+                child: TextFormField(
+                  controller: _feesController,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: '0.00',
+                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
+                    prefixText: '₱ ',
+                    prefixStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+                  ),
                 ),
               ),
             ],

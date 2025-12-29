@@ -11,6 +11,7 @@ class Transaction {
   final String note;
   final String description;
   final String? imagePath;
+  final double fees; // Transfer fees
 
   Transaction({
     required this.id,
@@ -23,7 +24,11 @@ class Transaction {
     this.note = '',
     this.description = '',
     this.imagePath,
+    this.fees = 0.0,
   });
+
+  // Total amount deducted from source (amount + fees)
+  double get totalDeducted => amount + fees;
 
   Transaction copyWith({
     String? id,
@@ -36,6 +41,7 @@ class Transaction {
     String? note,
     String? description,
     String? imagePath,
+    double? fees,
   }) {
     return Transaction(
       id: id ?? this.id,
@@ -48,6 +54,7 @@ class Transaction {
       note: note ?? this.note,
       description: description ?? this.description,
       imagePath: imagePath ?? this.imagePath,
+      fees: fees ?? this.fees,
     );
   }
 }

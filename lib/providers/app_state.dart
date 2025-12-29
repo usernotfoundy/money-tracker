@@ -286,8 +286,10 @@ class AppState extends ChangeNotifier {
     } else if (transaction.type == TransactionType.expense) {
       updateAccountBalance(transaction.accountId, -transaction.amount);
     } else if (transaction.type == TransactionType.transfer) {
-      updateAccountBalance(transaction.accountId, -transaction.amount);
+      // Deduct amount + fees from source account
+      updateAccountBalance(transaction.accountId, -transaction.totalDeducted);
       if (transaction.toAccountId != null) {
+        // Add only the amount to destination (fees are lost)
         updateAccountBalance(transaction.toAccountId!, transaction.amount);
       }
     } else if (transaction.type == TransactionType.payment) {
@@ -308,8 +310,10 @@ class AppState extends ChangeNotifier {
     } else if (transaction.type == TransactionType.expense) {
       updateAccountBalance(transaction.accountId, transaction.amount);
     } else if (transaction.type == TransactionType.transfer) {
-      updateAccountBalance(transaction.accountId, transaction.amount);
+      // Restore amount + fees to source account
+      updateAccountBalance(transaction.accountId, transaction.totalDeducted);
       if (transaction.toAccountId != null) {
+        // Remove amount from destination
         updateAccountBalance(transaction.toAccountId!, -transaction.amount);
       }
     } else if (transaction.type == TransactionType.payment) {
