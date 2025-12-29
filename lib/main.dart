@@ -137,16 +137,10 @@ class _AppEntryState extends State<AppEntry> {
                     ),
                   ],
                 ),
-                child: const Center(
-                  child: Text(
-                    'EMW',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      letterSpacing: 1,
-                    ),
-                  ),
+                child: const Icon(
+                  Icons.account_balance_wallet_rounded,
+                  size: 40,
+                  color: Colors.white,
                 ),
               ),
               

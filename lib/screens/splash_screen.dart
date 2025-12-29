@@ -113,29 +113,10 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ],
                         ),
-                        child: Center(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              // EMW Initials
-                              const Text(
-                                'EMW',
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.white,
-                                  letterSpacing: 2,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black26,
-                                      blurRadius: 4,
-                                      offset: Offset(1, 2),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                        child: const Icon(
+                          Icons.account_balance_wallet_rounded,
+                          size: 60,
+                          color: Colors.white,
                         ),
                       ),
                     ),
